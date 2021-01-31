@@ -15,12 +15,13 @@ module.exports = function check(str, bracketsConfig) {
 
     for (let j = 0; j < bracketsConfig.length; j++) {
 
-      if (str[i] == bracketsConfig[j][0]) {
-        bracket.push(str[i]);
-      }
-
       if (str[i] == bracketsConfig[j][1] && bracketsConfig[j][0] == bracket[bracket.length - 1]) {
         bracket.pop();
+        continue; //We could use 'break' or 'else if' next to this 'if'
+      }
+
+      if (str[i] == bracketsConfig[j][0]) {
+        bracket.push(str[i]);
 
       }
 
