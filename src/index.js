@@ -5,6 +5,7 @@ module.exports = function check(str, bracketsConfig) {
   }
   // Create a 'bracket' array to store each unclosed bracket (only open)
   let bracket = [];
+
   /* 
    We compare each elem in 'str' with each element in 'bracketsConfig' 
    - if it is closing bracket and equal to element[j][1], and also previously added element is open bracket (element[j][0]) which
@@ -12,6 +13,7 @@ module.exports = function check(str, bracketsConfig) {
      We need to use cntinue/break or else statements not to add same type of brackets!
    - in other case we add one more element to 'bracket' - that mean that we found one more open bracket
   */
+
   for (let i = 0; i < str.length; i++) {
 
     for (let j = 0; j < bracketsConfig.length; j++) {
@@ -34,4 +36,27 @@ module.exports = function check(str, bracketsConfig) {
   }
 
   return true;
+
+
+  /* - We able to replace existing solution with function in 'for(...)'
+  
+  for (let i = 0; i < str.length; i++) {
+    elementComparrison(str[i], bracketsConfig, bracket);
+  }  
+
+  function elementComparrison(element, configArray, resultArray) {
+    for (let i = 0; i < configArray.length; i++) {
+      if (element == configArray[i][1] && configArray[i][0] == resultArray[resultArray.length - 1]) {
+        resultArray.pop();
+        continue; // We could use 'break' or 'else if' next to this 'if'
+      }
+
+      if (element == configArray[i][0]) {
+        resultArray.push(element);
+      }
+    }
+    return resultArray;
+  }
+  */
+
 }
